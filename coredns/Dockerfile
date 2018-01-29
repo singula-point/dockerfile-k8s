@@ -1,0 +1,1 @@
+FROM coredns/coredns
