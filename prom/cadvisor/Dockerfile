@@ -16,6 +16,7 @@ RUN apk --no-cache add ca-certificates wget device-mapper findutils && \
 
 # Grab cadvisor from the staging directory.
 ADD cadvisor /usr/bin/cadvisor
+chmod +x /usr/bin/cadvisor
 
 EXPOSE 8080
 ENTRYPOINT ["/usr/bin/cadvisor", "-logtostderr"]
