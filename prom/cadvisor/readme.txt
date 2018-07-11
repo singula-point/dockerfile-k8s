@@ -16,8 +16,8 @@ docker run --restart=always -d -p 9091:9091 prom/pushgateway:v0.4.0
 pushgateway版本为：v0.4.0
 
 2、运行cadvisor镜像
-docker run -it -v /:/rootfs:ro -v /var/run:/var/run:rw -v /sys:/sys:ro -v /var/lib/docker/:/var/lib/docker:ro -e  LOCAL_ADDR=xxxx -e  PUSH_ADDR=xxxx:9091 singula/cadvisor
-其中，LOCAL_ADDR为采集终端的IP地址，PUSH_ADDR为pushgateway的地址，默认端口为9091.
+docker run -it -v /:/rootfs:ro -v /var/run:/var/run:rw -v /sys:/sys:ro -v /var/lib/docker/:/var/lib/docker:ro -e PUSH_FREQ=120 -e  LOCAL_ADDR=xxxx -e  PUSH_ADDR=xxxx:9091 singula/cadvisor
+其中，LOCAL_ADDR为采集终端的IP地址，PUSH_ADDR为pushgateway的地址，默认端口为9091，PUSH_FREQ用于设置采集的频率，120的单位为秒。
 
 3、验证
 浏览器中输入：LOCAL_ADDR/metrics，例如：xxxx:9091/metrics，网页中会得到大量的容器数据。
